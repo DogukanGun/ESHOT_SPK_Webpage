@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+{% extends 'layout.html' %}
+{% block body %}
+
+<link rel="stylesheet" type="text/css" href="/static/css/login.css">
+<div class="form"> 
+      <ul class="tab-group">
+        {% if id == 1 %}
+        <li class="tab active"><a class="buttonGrid" href="#">Sign Up</a></li>
+        {% else %}
+        <li class="tab"><a class="buttonGrid"  href="#">Log In</a></li> 
+        {% endif %}
+      </ul>
+{% if id == 1 %}
+        <div id="signup">
+          <h1>Sign Up</h1>
+
+          <form action="#" method="post">
+            {% csrf_token %}
+
+            <div class="top-row">
+            <div class="field-wrap">
+             <a style="color:#ffffff">Username :</a> {{form.username}}
+            </div>
+
+            <div class="field-wrap">
+              <a style="color:#ffffff">Name :</a> {{form.name}}
+            </div>
+          </div>
+ 
+
+          <div class="field-wrap">
+            <a style="color:#ffffff">Password :</a>  {{form.password}}
+          </div>
+
+          <button type="submit" class="button button-block"/>Get Started</button>
+
+          </form>
+
+        </div>
+{% else %}
+        <div id="login">  
+            <form action="#" method="post">
+            {% csrf_token %}
+ 
+               <h1>Welcome Back!</h1>
+            <div class="field-wrap">
+                <a style="color:#ffffff">Username :</a>  {{form.username}}
+          </div>
+
+          <div class="field-wrap">
+              <a style="color:#ffffff">Password :</a>  {{form.password}}
+          </div>
+                    <button type="submit" class="button button-block"/>Log In</button>
+            </form>   
+
+
+
+        </div>
+{% endif %}
+       </div> 
+</div>
+{% endblock body %}
+</html>
+

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
+<script src="/static/Js/navbar.js"></script>
+<div class="wrapper">
+  <header class="page-header">
+    <nav>
+
+      <a href=#><image src="/static/media/eshot_logo.jpg" style="height:40px" alt="ESHOT"></image></a>
+
+        {%if request.user.is_authenticated %}
+            <ul>
+                <div class="svg-wrapper">
+                    <svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+                    <rect id="shape" height="40" width="150" />
+                        <div id="text">
+                            <a href={% url 'authentication:logout' %}><span class="spot"></span>LOGOUT</a>
+                        </div>
+                    </svg>
+                </div>
+                <div class="svg-wrapper">
+                    <svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+                    <rect id="shape" height="40" width="150" />
+                        <div id="text">
+                            <a href="/"><span class="spot"></span>HOME</a>
+                        </div>
+                    </svg>
+                </div>
+            </ul>
+        {% else %}
+            <ul>
+                <div class="svg-wrapper">
+                    <svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+                    <rect id="shape" height="40" width="150" />
+                        <div id="text">
+                            <a href= {% url 'authentication:register'%}><span class="spot"></span>REGISTER</a>
+                        </div>
+                    </svg>
+                </div>
+                <div class="svg-wrapper">
+                    <svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+                    <rect id="shape" height="40" width="150" />
+                        <div id="text">
+                            <a href={% url 'authentication:login'%}><span class="spot"></span>LOGIN</a>
+                        </div>
+                    </svg>
+                </div>
+            </ul>
+    <!--start button, nothing above this is necessary -->
+
+    <!--Next button -->
+        {% endif %}
+        <ul> 
+        <a>ESHOT <a>
+        </div>
+        </ul>
+    </nav>
+  </header>
+</div>
+{% if messages %}
+
+                    {% for message in messages %}
+                    {% if message.tags == "info" %}
+                    <div class="alert alert-danger">{{ message }}</div>
+                    {% else %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+
+                    {% endif %}
+                    {% endfor %}
+
+                {% endif %}
+</html>
